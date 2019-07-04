@@ -154,7 +154,7 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
@@ -163,7 +163,7 @@
                 </button>
               </div>
             </div>
-          </form>
+          </form> -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -334,7 +334,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Gerar Contrato</a>
+            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="color:white"><i class="fas fa-download fa-sm text-white-50"></i> Gerar Contrato</a>
           </div>
 
           <!-- Content Row -->
@@ -684,6 +684,57 @@
   <script src="/static/js/demo/chart-area-demo.js"></script>
   <script src="/static/js/demo/chart-pie-demo.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          await ethereum.enable();
+          init()
+        } catch (err) {
+          $('#status').html('User denied account access', err)
+        }
+      } else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider)
+        init()
+      } else {
+        $('#status').html('No Metamask (or other Web3 Provider) installed')
+      }
+    })
+  </script>
 </body>
 
 </html>
+
+<!--
+function mainEnter() {
+        web3.eth.getAccounts(function(error, result) {
+        web3.eth.sendTransaction(
+            {from:web3.eth.accounts[0],
+            to:"0x943",
+            value:  "1000000000000000000", 
+            data: "0xdf"
+                }, function(err, transactionHash) {
+          if (!err)
+            console.log(transactionHash + " success"); 
+        });
+    });
+
+    }
+
+
+
+ethereum.enable()
+
+web3 = new Web3(web3.currentProvider);
+account = web3.eth.accounts[0];
+$('#sender').val(account);
+var accountInterval = setInterval(function(){
+  if(web3.eth.accounts[0] !== account){
+    account = web3.eth.accounts[0];
+    $('#sender').val(account);
+    document.getElementById("sender").innerHTML = account;
+  }
+}, 100);-->

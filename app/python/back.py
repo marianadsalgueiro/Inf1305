@@ -15,12 +15,7 @@ abi = json.loads('[{"constant": false, "inputs": [{"name": "_l", "type": "uint25
 address = "0xe297628b08decfacd069b4ef09989ebd8ef83135" #address of the deployed smart contract on the blockchain
 
 contract = web3.eth.contract(address=Web3.toChecksumAddress(address), abi=abi)
-print(contract)
 
 print(contract.functions.getLitrosComprador().call())
-print(contract.functions.getLitrosDono().call())
-print(contract.functions.getPreco().call())
-contract.functions.setLitros(10).call()
-contract.functions.setPreco(100).call()
 print(contract.functions.getLitrosDono().call())
 print(contract.functions.getPreco().call())
